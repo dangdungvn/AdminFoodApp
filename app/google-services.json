@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "596999552989",
+    "firebase_url": "https://foodapptung-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "foodapptung",
+    "storage_bucket": "foodapptung.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596999552989:android:6f913a350ff0e65ac54034",
+        "android_client_info": {
+          "package_name": "com.example.foodappadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_DcRlgKcrtCFh2nPP0LIQISDpJHF5LIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596999552989:android:bc17ea7d15bd3f7bc54034",
+        "android_client_info": {
+          "package_name": "com.example.foodapptest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_DcRlgKcrtCFh2nPP0LIQISDpJHF5LIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
