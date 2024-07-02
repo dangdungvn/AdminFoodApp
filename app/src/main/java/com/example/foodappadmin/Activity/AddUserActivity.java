@@ -57,6 +57,7 @@ public class AddUserActivity extends BaseActivity {
                 binding.passEdt.setError("Vui lòng nhập mật khẩu");
                 return;
             }
+            binding.progressBar.setVisibility(View.VISIBLE);
             mAuth.createUserWithEmailAndPassword(binding.emailEdt.getText().toString(), binding.passEdt.getText().toString()).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     FirebaseUser firebaseUser = mAuth.getCurrentUser();
@@ -90,6 +91,7 @@ public class AddUserActivity extends BaseActivity {
                                     userRef.child(String.valueOf(Id)).child("Type").setValue(0);
                                 }
                                 userRef.child(String.valueOf(Id)).child("UserId").setValue(UserId);
+                                binding.progressBar.setVisibility(View.GONE);
                                 Toast.makeText(AddUserActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(AddUserActivity.this, ListUserActivity.class);
                                 startActivity(intent);
@@ -98,11 +100,13 @@ public class AddUserActivity extends BaseActivity {
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
+                                binding.progressBar.setVisibility(View.GONE);
                                 Toast.makeText(AddUserActivity.this, "Không thể đăng ký tài khoản", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                 } else {
+                    binding.progressBar.setVisibility(View.GONE);
                     Toast.makeText(AddUserActivity.this, "Không thể đăng ký tài khoản", Toast.LENGTH_SHORT).show();
                 }
             });
