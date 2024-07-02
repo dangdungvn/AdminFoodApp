@@ -1,23 +1,15 @@
 package com.example.foodappadmin.Domain;
 
 public class Time {
-    private int id;
+    private int Id;
     private String Value;
 
-    public Time() {
-    }
-
-    @Override
-    public String toString() {
-        return Value;
-    }
-
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getValue() {
@@ -25,6 +17,14 @@ public class Time {
     }
 
     public void setValue(String value) {
-        this.Value = value;
+        Value = value;
+    }
+
+    @Override
+    public String toString() {
+        return Value;
+    }
+
+    public Time() {
     }
 }

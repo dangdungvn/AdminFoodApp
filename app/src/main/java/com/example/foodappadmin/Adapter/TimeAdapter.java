@@ -45,7 +45,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -28,6 +28,30 @@ public class MainActivity extends BaseActivity {
         getUserName();
         signOut();
         viewUser();
+        viewLocation();
+        viewTime();
+        viewPrice();
+    }
+
+    private void viewPrice() {
+        binding.priceCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, PriceActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void viewTime() {
+        binding.timeCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, TimeActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void viewLocation() {
+        binding.locationCard.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, LocationActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void viewUser() {
