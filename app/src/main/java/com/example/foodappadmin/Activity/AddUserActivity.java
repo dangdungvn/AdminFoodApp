@@ -86,9 +86,9 @@ public class AddUserActivity extends BaseActivity {
                                 userRef.child(String.valueOf(Id)).child("DiaChi").setValue(binding.diaChiEdt.getText().toString());
                                 userRef.child(String.valueOf(Id)).child("Password").setValue(binding.passEdt.getText().toString());
                                 if (binding.adminCb.isChecked()) {
-                                    userRef.child(String.valueOf(Id)).child("Type").setValue(1);
-                                } else {
                                     userRef.child(String.valueOf(Id)).child("Type").setValue(0);
+                                } else {
+                                    userRef.child(String.valueOf(Id)).child("Type").setValue(1);
                                 }
                                 userRef.child(String.valueOf(Id)).child("UserId").setValue(UserId);
                                 binding.progressBar.setVisibility(View.GONE);

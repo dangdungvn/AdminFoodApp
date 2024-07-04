@@ -47,15 +47,18 @@ public class UserDetailActivity extends BaseActivity {
                 if (snapshot.exists()) {
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         User user = ds.getValue(User.class);
-                        binding.emailEdt.setText(user.getEmail());
-                        binding.nameEdt.setText(user.getName());
-                        binding.sdtEdt.setText(user.getSDT());
-                        binding.diaChiEdt.setText(user.getDiaChi());
-                        if(user.getType()==0){
-                            binding.adminCb.setChecked(false);
-                        } else {
-                            binding.adminCb.setChecked(true);
+                        if(user !=null){
+                            binding.emailEdt.setText(user.getEmail());
+                            binding.nameEdt.setText(user.getName());
+                            binding.sdtEdt.setText(user.getSDT());
+                            binding.diaChiEdt.setText(user.getDiaChi());
+                            if(user.getType()==0){
+                                binding.adminCb.setChecked(true);
+                            } else {
+                                binding.adminCb.setChecked(false);
+                            }
                         }
+
                     }
                     binding.progressBar.setVisibility(View.GONE);
                 }
@@ -77,14 +80,13 @@ public class UserDetailActivity extends BaseActivity {
                 binding.nameEdt.setError("Hãy nhập tên người dùng");
                 return;
             }
-            userRef.child(String.valueOf(Id)).child("Email").setValue(binding.emailEdt.getText().toString());
             userRef.child(String.valueOf(Id)).child("Name").setValue(binding.nameEdt.getText().toString());
             userRef.child(String.valueOf(Id)).child("SDT").setValue(binding.sdtEdt.getText().toString());
             userRef.child(String.valueOf(Id)).child("DiaChi").setValue(binding.diaChiEdt.getText().toString());
             if(binding.adminCb.isChecked()){
-                userRef.child(String.valueOf(Id)).child("Type").setValue(1);
-            } else {
                 userRef.child(String.valueOf(Id)).child("Type").setValue(0);
+            } else {
+                userRef.child(String.valueOf(Id)).child("Type").setValue(1);
             }
             Intent intent = new Intent(UserDetailActivity.this, ListUserActivity.class);
             startActivity(intent);

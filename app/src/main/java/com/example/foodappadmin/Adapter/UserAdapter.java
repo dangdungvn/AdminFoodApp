@@ -42,7 +42,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         holder.sdt.setText(items.get(position).getSDT());
         holder.diaChi.setText(items.get(position).getDiaChi());
         holder.type.setText(items.get(position).getType()+"");
-        Glide.with(context).load(R.drawable.app_icon)
+        Glide.with(context)
+                .load(R.drawable.app_icon)
                 .transform(new CenterCrop(), new RoundedCorners(30))
                 .into(holder.pic);
         holder.itemView.setOnClickListener(view -> {
