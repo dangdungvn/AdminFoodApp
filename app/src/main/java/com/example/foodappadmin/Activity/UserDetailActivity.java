@@ -88,8 +88,6 @@ public class UserDetailActivity extends BaseActivity {
             } else {
                 userRef.child(String.valueOf(Id)).child("Type").setValue(1);
             }
-            Intent intent = new Intent(UserDetailActivity.this, ListUserActivity.class);
-            startActivity(intent);
             finish();
         });
     }

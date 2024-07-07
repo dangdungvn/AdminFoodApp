@@ -93,8 +93,6 @@ public class AddUserActivity extends BaseActivity {
                                 userRef.child(String.valueOf(Id)).child("UserId").setValue(UserId);
                                 binding.progressBar.setVisibility(View.GONE);
                                 Toast.makeText(AddUserActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(AddUserActivity.this, ListUserActivity.class);
-                                startActivity(intent);
                                 finish();
                             }
 

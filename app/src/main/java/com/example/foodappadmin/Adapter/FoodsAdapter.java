@@ -37,6 +37,7 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.ViewHolder> 
 
     public FoodsAdapter(ArrayList<Foods> list) {
         this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -88,6 +89,9 @@ public class FoodsAdapter extends RecyclerView.Adapter<FoodsAdapter.ViewHolder> 
             intent.putExtra("FoodId", list.get(position).getId());
             holder.itemView.getContext().startActivity(intent);
             notifyItemChanged(position);
+            notifyItemInserted(position);
+            notifyItemRangeChanged(position, list.size());
+            notifyAll();
             ((Activity)context).finish();
         });
         holder.itemView.setOnLongClickListener(view -> {

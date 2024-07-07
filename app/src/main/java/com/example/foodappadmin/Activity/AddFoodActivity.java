@@ -148,8 +148,6 @@ public class AddFoodActivity extends BaseActivity {
                                 }).addOnFailureListener(e -> Toast.makeText(AddFoodActivity.this, "Upload thất bại", Toast.LENGTH_SHORT).show());
                     }
                     userRef.child(String.valueOf(Id)).child("Description").setValue(binding.descEdt.getText().toString());
-                    Intent intent = new Intent(AddFoodActivity.this, ListFoodsActivity.class);
-                    startActivity(intent);
                     finish();
                 }
 

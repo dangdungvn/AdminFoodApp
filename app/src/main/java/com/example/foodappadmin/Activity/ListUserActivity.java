@@ -2,6 +2,7 @@ package com.example.foodappadmin.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.foodappadmin.Adapter.FoodsAdapter;
 import com.example.foodappadmin.Adapter.UserAdapter;
@@ -27,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ListUserActivity extends BaseActivity {
+public class ListUserActivity extends BaseActivity  implements SwipeRefreshLayout.OnRefreshListener {
     ActivityListUserBinding binding;
     private RecyclerView.Adapter adapterListUser;
 
@@ -62,6 +64,7 @@ public class ListUserActivity extends BaseActivity {
                         adapterListUser = new UserAdapter(list);
                         binding.foodListView.setAdapter(adapterListUser);
                         adapterListUser.notifyDataSetChanged();
+                        binding.swipeRefreshLayout.setOnRefreshListener(ListUserActivity.this);
                     }
                     binding.progressBar.setVisibility(View.GONE);
                 }
@@ -78,5 +81,16 @@ public class ListUserActivity extends BaseActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        initList();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                binding.swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1000);
     }
 }

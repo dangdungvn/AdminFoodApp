@@ -176,14 +176,12 @@ public class FoodDetailActivity extends BaseActivity {
                 fileRef.putFile(imageUri)
                         .addOnSuccessListener(taskSnapshot -> fileRef.getDownloadUrl()
                                 .addOnSuccessListener(uri ->
-                                        userRef.child(String.valueOf(Id)).child("ImagePath").setValue(uri.toString()))).
-                        addOnProgressListener(snapshot -> {
+                                        userRef.child(String.valueOf(Id)).child("ImagePath").setValue(uri.toString())))
+                                .addOnProgressListener(snapshot -> {
 
                         }).addOnFailureListener(e -> Toast.makeText(FoodDetailActivity.this, "Upload thất bại", Toast.LENGTH_SHORT).show());
             }
             userRef.child(String.valueOf(Id)).child("Description").setValue(binding.descEdt.getText().toString());
-            Intent intent = new Intent(FoodDetailActivity.this, ListFoodsActivity.class);
-            startActivity(intent);
             finish();
         });
         binding.updatePic.setOnClickListener(view1 -> {

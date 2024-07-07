@@ -2,6 +2,7 @@ package com.example.foodappadmin.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.foodappadmin.Activity.BaseActivity;
 import com.example.foodappadmin.Adapter.FoodsAdapter;
@@ -24,13 +26,14 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ListFoodsActivity extends BaseActivity {
+public class ListFoodsActivity extends BaseActivity implements  SwipeRefreshLayout.OnRefreshListener {
     ActivityListFoodsBinding binding;
     private RecyclerView.Adapter adapterListFood;
     private int categoryId;
     private String categoryName;
     private String searchText;
     private boolean isSearch;
+    private SwipeRefreshLayout refreshLayout;
 
 
     public ListFoodsActivity() {
@@ -80,6 +83,7 @@ public class ListFoodsActivity extends BaseActivity {
                         adapterListFood = new FoodsAdapter(list);
                         binding.foodListView.setAdapter(adapterListFood);
                         adapterListFood.notifyDataSetChanged();
+                        binding.swipeRefreshLayout.setOnRefreshListener(ListFoodsActivity.this);
                     }
                     binding.progressBar.setVisibility(View.GONE);
                 }
@@ -105,5 +109,16 @@ public class ListFoodsActivity extends BaseActivity {
             binding.titleTxt2.setText("Đồ ăn");
         }
         binding.btnBack.setOnClickListener(v -> finish());
+    }
+
+    @Override
+    public void onRefresh() {
+        initList();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                binding.swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1000);
     }
 }

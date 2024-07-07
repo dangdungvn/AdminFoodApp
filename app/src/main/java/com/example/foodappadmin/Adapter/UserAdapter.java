@@ -26,6 +26,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     Context context;
     public UserAdapter(ArrayList<User> items) {
         this.items = items;
+        notifyDataSetChanged();
     }
     @NonNull
     @Override
